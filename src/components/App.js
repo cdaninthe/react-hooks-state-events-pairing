@@ -1,17 +1,20 @@
+import React, {useState} from "react";
+import Video from "./Video.js";
+import VideoDetails from "./VideoDetails.js";
+import CommentsList from "./CommentsList.js";
 import video from "../data/video.js";
 
 function App() {
+  const [comments, setComments] = useState(video.comments)
+
   console.log("Here's your data:", video);
 
   return (
     <div className="App">
-      <iframe
-        width="919"
-        height="525"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-        frameBorder="0"
-        allowFullScreen
-        title="Thinking in React"
+      <Video video={video}/>
+      <VideoDetails video={video} />
+      <CommentsList 
+        comments={comments} setComments={setComments}
       />
     </div>
   );
